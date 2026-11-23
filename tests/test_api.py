@@ -27,7 +27,7 @@ def test_health_without_model(client):
     assert h.model.available is False and h.model.reason == "weights_missing"
     assert h.explanations.available is True and h.explanations.supported_languages == ["en"]
     assert h.baselines["tfidf"].available is False and h.baselines["tfidf"].reason == "artifact_missing"
-    assert h.baselines["multilingual_embedding"].reason == "not_implemented"
+    assert h.baselines["multilingual_embedding"].reason == "artifact_missing"
 
 
 def test_manifest_without_weights_is_not_ready(tmp_path, make_client):
@@ -234,7 +234,7 @@ def test_missing_baseline_artifacts_are_reported_not_faked(client):
     assert b["requested"] is True
     assert {k: v["status"] for k, v in b["scores"].items()} == {"tfidf": "unavailable", "multilingual_embedding": "unavailable"}
     assert b["scores"]["tfidf"]["reason"] == "artifact_missing" and b["scores"]["tfidf"]["score"] is None
-    assert b["scores"]["multilingual_embedding"]["reason"] == "not_implemented"
+    assert b["scores"]["multilingual_embedding"]["reason"] == "artifact_missing"
     assert any("no fitted baseline" in w for w in d["warnings"])
 
 

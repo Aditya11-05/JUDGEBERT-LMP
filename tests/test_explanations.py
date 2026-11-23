@@ -470,10 +470,24 @@ def test_hindi_is_not_supported_yet():
 
 
 def test_explanations_are_independent_of_the_regression_model():
-    import app.explanations as pkg, sys
-    assert not any(m.startswith(("torch", "transformers")) for m in sys.modules if m.split(".")[0] in ("torch", "transformers"))
-    src = open(pkg.__file__).read()
-    assert "scoring" not in src and "TfidfBaseline" not in src
+    import subprocess
+    import sys
+
+    code = """
+import sys
+import app.explanations as pkg
+
+assert not any(
+    m.split(".")[0] in ("torch", "transformers")
+    for m in sys.modules
+)
+
+src = open(pkg.__file__).read()
+assert "scoring" not in src
+assert "TfidfBaseline" not in src
+"""
+
+    subprocess.run([sys.executable, "-c", code], check=True)
 
 
 # ------------------------------------------------------------ regressions found by probing untuned pairs
