@@ -13,7 +13,7 @@ __pycache__/
 *.db
 datasets/raw/
 datasets/annotations/
-models/
+/models/
 backups/
 
 # Generated datasets and extracted legal source material
