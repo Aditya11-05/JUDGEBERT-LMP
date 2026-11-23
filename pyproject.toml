@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "judgebert-lmp"
+version = "0.1.0"
+description = "JUDGEBERT-inspired multilingual legal meaning preservation (research prototype)"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy", "pandas", "scipy", "scikit-learn", "pyyaml", "matplotlib",
+  "pydantic>=2", "fastapi>=0.110", "uvicorn>=0.27",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "httpx>=0.27"]
+# Not installable in the offline sandbox; needed for the transformer model and embedding baseline:
+ml = ["torch", "transformers", "datasets", "sentence-transformers"]
+ui = ["streamlit>=1.50", "httpx>=0.27"]
+
+[tool.setuptools.packages.find]
+include = ["app*", "frontend*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+markers = [
+  "network: needs model downloads or internet",
+  "slow: heavy model tests",
+  "live_server: starts a real uvicorn process on localhost (offline-safe)",
+  "mock_model: uses MockPredictor, a deterministic fake (NOT a trained model)",
+  "toy_fixture: uses a tiny artifact fitted on invented toy sentences (NOT research data)",
+  "real_model: needs a real trained model; skipped when none is installed",
+]
+addopts = "-m 'not network'"

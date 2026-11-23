@@ -1,0 +1,7 @@
+pair_id,original_text,simplified_text,language,context,legal_domain
+ex-1,The tenant must pay rent by the fifth day of each month.,The tenant may pay rent by the tenth day of each month.,en,,rental
+ex-2,The tenant must pay the rent by the fifth day of each month.,The tenant is required to pay rent no later than the fifth day of every month.,en,,rental
+ex-3,All employees must wear badges unless the manager agrees.,Some employees may wear badges.,en,Illustrative clause,employment
+ex-4,The fee is Rs. 10000 per month.,The fee is Rs. 1000 per month.,en,,
+ex-5,किरायेदार को किराया देना होगा।,किरायेदार किराया दे सकता है।,hi,,rental
+ex-6,,This row has no original text.,en,,

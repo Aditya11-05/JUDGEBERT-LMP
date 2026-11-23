@@ -1,0 +1,7 @@
+seed: 42
+languages: [en, hi]          # Hindi is a candidate, not yet confirmed
+score_range: [1.0, 10.0]
+split: {train: 0.70, val: 0.15, test: 0.15}
+categories:                  # PROPOSED thresholds; to be tuned on validation only
+  preserved_min: 7.0
+  partial_min: 4.0

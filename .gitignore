@@ -1,0 +1,33 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+.DS_Store
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+*.sqlite
+*.sqlite3
+*.db
+datasets/raw/
+datasets/annotations/
+models/
+backups/
+
+# Generated datasets and extracted legal source material
+datasets/
+!datasets/README.md
+
+# Python package build metadata
+*.egg-info/
+
+# Source document identifiers
+document_identifiers.txt
+
+# Local model files and checkpoints
+*.pt
+*.pth
+*.pkl
+*.safetensors
